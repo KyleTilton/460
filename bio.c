@@ -13,7 +13,7 @@ int gets(char s[ ])
 
 int printf(char *fmt, ...) 
 {
-  char * = fmt;
+  char *cp = fmt;
   u16 *ip = (u16 *)&fmt + 1;
   u32 *up;
   while (*cp) {
@@ -30,8 +30,8 @@ int printf(char *fmt, ...)
       case 'u' : printu(*ip); break;
       case 'd' : printd(*ip); break;
       case 'x' : printx(*ip); break;
-      case 'l' : printl(*ip); break;
-      case 'X' : printX(*ip); break;
+      case 'l' : printl(*(u32 *)ip); break;
+      case 'X' : printX(*(u32 U)ip); break;
     }
     cp++; ip++;
   }

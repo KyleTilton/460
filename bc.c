@@ -36,7 +36,8 @@ u16 color = RED;           // initial color for putc()
 
 #define  BOOTSEG 0x9000
 
-//#include "bio.c" // <========= WRITE YOUR OWN io.c file !!!!
+#include "bio.c" // <========= WRITE YOUR OWN io.c file !!!!
+#include "ext2.h"
 
 char mbr[512];
 char ans[64];
