@@ -1,7 +1,15 @@
+#define MAXLEN 128
 
 int prints(char *s) { while(*s) putc(*s++); }
 
-int gets() {}
+int gets(char s[ ]) 
+{
+  char c, *t = s; int len=0;
+  while( (c=getc()) != '\r' && len < MAXLEN-1) {
+    *t++ = c; putc(c); len++;
+  }
+  *t = 0; return s;
+}
 
 int printf(char *fmt, ...) 
 {
