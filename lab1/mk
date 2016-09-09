@@ -1,0 +1,16 @@
+VFD=FDimage
+
+as86 -o ts.o ts.s
+bcc  -c -ansi t.c
+ld86 -d -o mtx ts.o t.o mtxlib /usr/lib/bcc/libc.a
+
+echo mount $VFD on /mnt
+
+sudo mount -o loop $VFD /mnt
+
+echo sudo rm /mnt/boot/*
+
+echo sudo cp mtx /mnt/boot
+echo sudo umount /mnt
+
+echo qemu -fda FDimage -no-fd-bootchk
