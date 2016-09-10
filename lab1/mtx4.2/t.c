@@ -105,7 +105,7 @@ int body()
 		switch(c)
 		{
 			case 'f' : do_kfork();	break;
-			case 'c' : do_tswitch(); break;
+			case 's' : do_tswitch(); break;
 		}
 	}
 }
@@ -157,11 +157,9 @@ int init()
 
 int scheduler()
 {
-  printf("running: %d, running->status %d", running, running->status);
 	if (running->status == READY)		// if running is still READY
 		enqueue(&readyQueue, running);	// enter it into readyQueue
 	running = dequeue(&readyQueue);		// new running
-  printf("running: %d, running->status %d", running, running->status);
 }
 
 
@@ -186,6 +184,8 @@ int do_kfork()
 	return p->pid;
 }
 int do_tswitch() {	tswitch();	};
+
+
 
 // print name=list contents
 printList(char *name, PROC *list)
